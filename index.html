@@ -2,21 +2,23 @@
 <html>
 
 <head>
-    <title>Rock Paper Scissor</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <h1 class="title">Rock Paper Scissors</h1>
     <div class="container">
         <div id="Rock" class="RPS">
             <img src="https://www.thesun.co.uk/wp-content/uploads/2021/01/NINTCHDBPICT000631786679.jpg?strip=all&w=631"
-                class="rockImage">
+                class="rockImage" id="rockImage">
 
         </div>
-        <div id="Paper" class="RPS">Paper</div>
-        <div id="Scissor" class="RPS">Scissor</div>
+        <div id="Paper" class="RPS">
+            <img src="https://img.cigar.com/products/BWA-MM-1026.png?v=527388" class="rockImage" id="paperImage">
+        </div>
+        <div id="Scissor" class="RPS"> <img src="http://store.workshopsupply.com/catalogue/images/710094-1116.png"
+                class="rockImage" id="scissorImage" onclick="doSomething()"> </div>
     </div>
 
     <div class=ScoreBox>
@@ -31,5 +33,11 @@
         </div>
     </div>
 </body>
+
+<script>
+    function doSomething() {
+        alert('I CLICKED')
+    }
+</script>
 
 </html>

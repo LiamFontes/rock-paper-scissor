@@ -72,7 +72,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-    const maxScore = prompt("Best of how many games?");
+    const maxScore = 5;
     let playerScore = 0;
     let computerScore = 0;
     for (i = 0; i < 100; i++) {
