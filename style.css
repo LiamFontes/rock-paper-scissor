@@ -63,4 +63,13 @@
 .title{
     color:salmon;
     text-align: center;
+    
+}
+
+@keyframes test {
+    from {color:blue}
+    to {color:yellow}
+}
+.colorChange{
+    color: blue
 }
