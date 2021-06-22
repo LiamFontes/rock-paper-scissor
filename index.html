@@ -11,17 +11,20 @@
     <div class="container">
         <div id="Rock" class="RPS">
             <img src="https://www.thesun.co.uk/wp-content/uploads/2021/01/NINTCHDBPICT000631786679.jpg?strip=all&w=631"
-                class="rockImage" id="rockImage" onclick="doSomething(this.id)">
+                class="rockImage" id="rockImage" onclick="playRound(this.id)">
 
         </div>
         <div id="Paper" class="RPS">
             <img src="https://img.cigar.com/products/BWA-MM-1026.png?v=527388" class="rockImage" id="paperImage"
-                onclick="doSomething(this.id)">
+                onclick="playRound(this.id)">
         </div>
         <div id="Scissor" class="RPS"> <img src="http://store.workshopsupply.com/catalogue/images/710094-1116.png"
-                class="rockImage" id="scissorImage" onclick="doSomething(this.id)"> </div>
+                class="rockImage" id="scissorImage" onclick="playRound(this.id)"> </div>
     </div>
 
+    <div class="messageDiv" id = "messageDiv">
+        There can only be one... Click on an image to choose your warrior!
+    </div>
     <div class=ScoreBox>
         <div class="scoreBoard">
             Man
@@ -30,79 +33,17 @@
 
         <div class="scoreBoard">
             Machine
-            <div id="computerScore" class="scoreHolderBox"> 1 </div>
+            <div id="computerScore" class="scoreHolderBox"> 0 </div>
         </div>
+    </div>
+
+    <div class = "button-div">
+        <button onclick="ResetScore()">Score Reset</button>
     </div>
 </body>
 
-<script>
-    function doSomething(id) {
-        alert(id)
-    }
-
-    //window.addEventListener('load', alert("yo"));
-
-    function playerSelection(id) {
-        if (id === "rockImage") {
-            return "rock"
-        }
-
-        if (id === "paperImage") {
-            return "paper"
-        }
-
-        if (id === "scissorImage") {
-            return "scissor"
-        }
-    }
-
-
-    function playRound(playerSelection) {
-        let playChoice = null;
-        if (playerSelection === "rockImage") {
-            playChoice = "rock";
-        }
-
-        if (id === "paperImage") {
-            playChoice = "paper";
-        }
-
-        if (id === "scissorImage") {
-            playChoice = "scissor";
-        }
-
-        computerChoice = computerPlay();
-
-
-    }
-
-    function computerPlay() {
-
-        let choice = null;
-
-        randomNumber = Math.random();
-        if (randomNumber <= 0.33) {
-            choice = "rock";
-
-        }
-        else if (randomNumber >= 0.33 && randomNumber < 0.67) {
-            choice = "paper"
-        }
-
-        else {
-            choice = "scissor";
-        }
-
-        return choice
-
-    }
-
-
-
-// each time an image is clicked, play a game
-// increment counter for winner
-// once div content equals max score, finish game
-
+<script src = "script.js">
+    
 </script>
 
 </html>
