@@ -43,22 +43,35 @@
     font-size: xx-large;
 }
 
-.rockImage{
+.imgScissor{
     display: flex;
     width:20em;
     height: 22em;
     margin: auto;
 }
 
-.rockImage:hover{
-    box-shadow: 0 0 1rem red;
-    transform: scale(1.1);
+.imgRock{
+    display: flex;
+    width:20em;
+    height: 22em;
+    margin: auto;
 }
 
+.imgPaper{
+    display: flex;
+    width:20em;
+    height: 22em;
+    margin: auto;
+}
+
+.img:hover{
+    box-shadow: 0 0 0 50px red;
+    border:solid red;
+}
 .title{
     color: black;
     text-align: center;
-    font-size: 5em;
+    font-size: 2em;
     
 }
 
@@ -76,7 +89,7 @@
 }
 
 button{
-    width:50%;
+    width: 30%;
     font-size: 5em;
     background-color: rgb(59, 116, 190);
     border-radius: 10px;
@@ -87,3 +100,10 @@ button{
     margin: auto;
     text-align: center;
 }
+
+.playing {
+    transform: scale(1.5);
+    transition: all 1s ease-in-out;
+    border-color: #ffc600;
+    box-shadow: 0 0 5rem #ffc600;
+  }

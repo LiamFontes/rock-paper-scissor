@@ -1,6 +1,8 @@
+window.addEventListener('click', chooseWarrior)
+
 function playRound(playerSelection) {
-    if (document.getElementById("computerScore").textContent === "5" || document.getElementById("playerScore").textContent === "5"){
-        ResetScore()  
+    if (document.getElementById("computerScore").textContent === "5" || document.getElementById("playerScore").textContent === "5") {
+        ResetScore()
         return
     }
     let playChoice = null;
@@ -24,44 +26,44 @@ function playRound(playerSelection) {
     computerChoice = computerPlay();
 
     if (playChoice === computerChoice) {
-    result = `Both chose ${playChoice}, try to outsmart the machine!`;
-}
+        result = `Both chose ${playChoice}, try to outsmart the machine!`;
+    }
 
-/* USER CHOOSES SCISSOR*/
-else if (playChoice === scissorOption && computerChoice === rockOption) {
-    result = "Rock crushes scissors! The computer beat you this round."
-    winner = "computer";
-}
+    /* USER CHOOSES SCISSOR*/
+    else if (playChoice === scissorOption && computerChoice === rockOption) {
+        result = "Rock crushes scissors! The computer beat you this round."
+        winner = "computer";
+    }
 
-else if (playChoice === scissorOption && computerChoice === paperOption) {
-    result = "Scissor cuts paper! Point to humankind!"
-    winner = "player";
-}
+    else if (playChoice === scissorOption && computerChoice === paperOption) {
+        result = "Scissor cuts paper! Point to humankind!"
+        winner = "player";
+    }
 
-/* USER CHOOSES ROCK*/
-else if (playChoice === rockOption && computerChoice === paperOption) {
-    result = "Paper covers rock! This round goes to the machine!"
-    winner = "computer";
-}
+    /* USER CHOOSES ROCK*/
+    else if (playChoice === rockOption && computerChoice === paperOption) {
+        result = "Paper covers rock! This round goes to the machine!"
+        winner = "computer";
+    }
 
-else if (playChoice === rockOption && computerChoice === scissorOption) {
-    result = "Rock smashes scissors! Take that computer!"
-    winner = "player";
-}
+    else if (playChoice === rockOption && computerChoice === scissorOption) {
+        result = "Rock smashes scissors! Take that computer!"
+        winner = "player";
+    }
 
-/* USER CHOOSES PAPER*/
-else if (playChoice === paperOption && computerChoice === scissorOption) {
-    result = "Scissor cuts Paper! Point for Skynet"
-    winner = "computer";
-}
+    /* USER CHOOSES PAPER*/
+    else if (playChoice === paperOption && computerChoice === scissorOption) {
+        result = "Scissor cuts Paper! Point for Skynet"
+        winner = "computer";
+    }
 
-else if (playChoice === paperOption && computerChoice === rockOption) {
-    result = "Paper covers rock! Chalk one up for humanity"
-    winner = "player";
-}
-incrementScore(winner)
-MessageSend(result)
-maxScoreCheck()
+    else if (playChoice === paperOption && computerChoice === rockOption) {
+        result = "Paper covers rock! Chalk one up for humanity"
+        winner = "player";
+    }
+    incrementScore(winner)
+    MessageSend(result)
+    maxScoreCheck()
 }
 
 
@@ -88,45 +90,63 @@ function computerPlay() {
 }
 
 
-function incrementScore(winner){
-    if (winner === "player"){
+function incrementScore(winner) {
+    if (winner === "player") {
         const playerScore = document.getElementById("playerScore").innerText;
         const updatedScore = new String(Number(playerScore) + 1);
         document.getElementById("playerScore").textContent = updatedScore;
-        
+
     }
 
-    if (winner === "computer"){
+    if (winner === "computer") {
         const computerScore = document.getElementById("computerScore").innerText;
         const updatedScore = new String(Number(computerScore) + 1);
         document.getElementById("computerScore").textContent = updatedScore;
-        
+
     }
 }
 
-function ResetScore(){
+function ResetScore() {
 
     document.getElementById("playerScore").textContent = "0";
     document.getElementById("computerScore").textContent = "0";
-    if (document.getElementById("computerScore").textContent !== "5" && document.getElementById("playerScore").textContent !== "5"){
-        document.getElementById("messageDiv").textContent = "And so it begins...";    
+    if (document.getElementById("computerScore").textContent !== "5" && document.getElementById("playerScore").textContent !== "5") {
+        document.getElementById("messageDiv").textContent = "And so it begins...";
     }
-    
+
 
 }
 
-function maxScoreCheck(){
+function maxScoreCheck() {
 
-    if(document.getElementById("playerScore").innerText == "5"){
+    if (document.getElementById("playerScore").innerText == "5") {
         document.getElementById("messageDiv").textContent = "Humankind Wins! Reset the score to show that silicon who's boss!";
     }
-    if(document.getElementById("computerScore").innerText == "5"){
+    if (document.getElementById("computerScore").innerText == "5") {
         document.getElementById("messageDiv").textContent = "Skynet is live... Reset the score to give humanity another chance!";
-    
+
     }
 }
 
-function MessageSend(result){
+function MessageSend(result) {
     document.getElementById("messageDiv").textContent = result;
-
 }
+
+function chooseWarrior(e) {
+    console.log(e.target)
+    const choice = e.target;
+    if (choice.id === "rockImage" || choice.id === "scissorImage" || choice.id === "paperImage") {
+        choice.classList.add('playing')
+        return
+    }
+}
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; //skip if it's not transform
+    this.classList.remove('playing');
+}
+
+const images = document.querySelectorAll('img')
+
+images.forEach(image => image.addEventListener('transitionend', removeTransition));
+
